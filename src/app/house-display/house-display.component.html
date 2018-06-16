@@ -1,0 +1,49 @@
+
+  <div class="thumbnail">
+    <img src="assets/images/{{hl.image}}.jpg" alt="House image">
+
+
+    <div class="caption" >
+
+<!--Change the div when Show Details is clicked-->
+<div *ngIf=!hl.showDetails>
+        <h4><span class="label label-primary">{{hl.type}}</span></h4>
+      <h3><h4 class="glyphicon glyphicon-home" aria-hidden="true"> </h4> {{hl.address}}</h3>
+      <h3><span class="glyphicon glyphicon-tag" aria-hidden="true">  </span> {{hl.price | currency: 'USD':true}} </h3>
+
+<button type="button" class="btn btn-success"   *ngIf=!hl.showDetails (click)= "hl.showDetails = !hl.showDetails">Show details</button>
+</div>
+
+<!--Change the div when Show Details is clicked-->
+<div *ngIf="hl.showDetails" >
+      <div class="details">
+<h3>
+          <span  class="label label-primary">
+            Beds: {{hl.details.bedrooms}}
+        </span>
+
+          <span class="label label-primary">
+            Baths: {{ hl.details.bathrooms}}
+          </span>
+
+        <span class="label label-primary">
+            SqFt: {{hl.details.area }}
+          </span>
+
+</h3>
+        <p>{{ hl.description }}</p>
+
+        <hr>
+
+        <button type="button"
+          class="btn btn-success"
+          (click)="hl.showDetails = !hl.showDetails">
+          Show less
+        </button>
+
+      </div>
+</div>
+</div> <!--caption class close div -->
+
+
+  </div>
